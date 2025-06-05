@@ -9,6 +9,9 @@ def _get_scenario(s: str) -> str:
     """Parses the relevant scenario from the experience log."""
     return s.split("Here is the task:")[-1].strip()
 
+# Constructs a multi-line prompt (query) that:
+# Instructs the AI to reflect on a past failure. Asks for a new plan addressing past mistakes. Includes few-shot examples (FEW_SHOT_EXAMPLES). Adds the current scenario (scenario).
+
 def _generate_reflection_query(log_str: str, memory: List[str]) -> str:
     """Allows the Agent to reflect upon a past experience."""
     scenario: str = _get_scenario(log_str)
